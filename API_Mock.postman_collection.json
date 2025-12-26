@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "d9170287-4658-4cb6-9a9a-88fa63fba945",
+		"name": "API_Mock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14373431",
+		"_collection_link": "https://www.postman.com/kavyamellacheruvu/workspace/automation-testing/collection/14373431-d9170287-4658-4cb6-9a9a-88fa63fba945?action=share&source=collection_link&creator=14373431"
+	},
+	"item": [
+		{
+			"name": "getapitestingcourses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"console.log(jsonData.data);",
+							"const category = 'Javascript'",
+							"const js = jsonData.data.filter(d => d.category === category)",
+							"const  coursesArray = js.map(obj => obj.course)",
+							"",
+							"",
+							"pm.test(`Check if there is a category Javascript added`, function(){",
+							"    pm.expect(js.length).to.be.greaterThanOrEqual(1)",
+							"})",
+							"",
+							"if(category === 'Javascript'){",
+							"pm.test('Check if course name has Postman', function(){",
+							"    pm.expect(coursesArray).to.include('Postman')",
+							"})",
+							"}else{",
+							"   pm.test('Check if course name has Rest Assured', function(){",
+							"    pm.expect(coursesArray).to.include('RestAssured')",
+							"}) ",
+							"}",
+							"",
+							"",
+							"pm.environment.set(\"course\", coursesArray[0]);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/getapitestingcourses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"getapitestingcourses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/getapitestingcourses",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getapitestingcourses"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "        {\n        \"data\": [\n        {\n            \"course\": \"Postman\",\n            \"price\": 150,\n            \"category\": \"Javascript\"\n        },\n        {\n            \"course\": \"SoapUI\",\n            \"price\": 25,\n            \"category\": \"Groovy\"\n        },\n        {\n            \"course\": \"RestAssured\",\n            \"price\": 100,\n            \"category\": \"Java\"\n        },\n        {\n            \"course\": \"RestAssured1\",\n            \"price\": 101,\n            \"category\": \"Java\"\n        }\n    ]\n}\n"
+				}
+			]
+		},
+		{
+			"name": "getCourseDetails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"const jsonData = pm.response.json()",
+							"pm.test('Validate response status to be 200', function(){",
+							"pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test('Validate students to be greater than or equal to 10000', function(){",
+							"pm.expect(pm.response.json().students).to.be.greaterThanOrEqual(10000)",
+							"pm.expect(jsonData.category).to.eq('Javascript')",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/getapitestingcourses?course={{course}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"getapitestingcourses"
+					],
+					"query": [
+						{
+							"key": "course",
+							"value": "{{course}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "BookDetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getapitestingcourses?course={{course}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getapitestingcourses"
+							],
+							"query": [
+								{
+									"key": "course",
+									"value": "{{course}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"course\": \"Postman\",\n    \"price\": 150,\n    \"category\": \"Javascript\",\n    \"content\": \"photos\", \n    \"length\": \"20 hours\", \n    \"students\": 20000\n}\n"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://9b6847eb-07bf-4cc6-9d09-c87547f442ed.mock.pstmn.io"
+		},
+		{
+			"key": "course",
+			"value": ""
+		}
+	]
+}
