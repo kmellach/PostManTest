@@ -50,7 +50,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://www.googleapis.com/oauth2/v4/token?code=4%2F0AVGzR1BQN97VF5X3qfzZWQ0IEnYYHqe9_qv1Som0KzG00vvrW4pLGobQa9GSg7uiK-9vxQ&client_id={{vault:google-oauth-token}}&client_secret=erZOWM9g3UtwNRj340YYaK_W&redirect_uri=https://rahulshettyacademy.com/getCourse.php&grant_type=authorization_code",
+					"raw": "https://www.googleapis.com/oauth2/v4/token?code={{code}}&client_id={{vault:google-oauth-token}}&client_secret={{%%%}}&redirect_uri=https://rahulshettyacademy.com/getCourse.php&grant_type=authorization_code",
 					"protocol": "https",
 					"host": [
 						"www",
@@ -65,7 +65,7 @@
 					"query": [
 						{
 							"key": "code",
-							"value": "4%2F0AVGzR1BQN97VF5X3qfzZWQ0IEnYYHqe9_qv1Som0KzG00vvrW4pLGobQa9GSg7uiK-9vxQ"
+							"value": "{{vault:code}}"
 						},
 						{
 							"key": "client_id",
@@ -73,7 +73,7 @@
 						},
 						{
 							"key": "client_secret",
-							"value": "erZOWM9g3UtwNRj340YYaK_W"
+							"value": "{{vault:secret}}"
 						},
 						{
 							"key": "redirect_uri",
