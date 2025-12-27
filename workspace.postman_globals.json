@@ -1,0 +1,33 @@
+{
+	"id": "9b0d56b2-b034-4241-8452-ed3571430702",
+	"values": [
+		{
+			"key": "companyCode",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "code",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-12-27T06:33:19.896Z",
+	"_postman_exported_using": "Postman/11.77.2"
+}
